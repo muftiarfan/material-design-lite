@@ -84,12 +84,11 @@ MaterialComponentsSnippets.prototype.copyToClipboard = function(snippet) {
 MaterialComponentsSnippets.prototype.onMouseClickHandler = function(snippet) {
   'use strict';
 
-  var ctx = this;
   return function() {
-    if (ctx.copyToClipboard(snippet)) {
+    if (this.copyToClipboard(snippet)) {
       snippet.classList.add(ctx.CssClasses_.COPIED);
     }
-  };
+  }.bind(this);
 };
 
 /**
@@ -100,7 +99,6 @@ MaterialComponentsSnippets.prototype.onMouseClickHandler = function(snippet) {
 MaterialComponentsSnippets.prototype.onMouseOutHandler = function(snippet) {
   'use strict';
 
-  var ctx = this;
   return function() {
     snippet.classList.remove(ctx.CssClasses_.COPIED);
   };
